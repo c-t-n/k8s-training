@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  rng:
+    image: ellessen/dockercoin-rng
+    deploy:
+      mode: global
+
+  hasher:
+    image: ellessen/dockercoin-hasher
+
+  webui:
+    image: ellessen/dockercoin-ui
+    ports:
+      - "8000:80"
+
+  redis:
+    image: redis
+
+  worker:
+    image: ellessen/dockercoin-worker
+    deploy:
+      replicas: 10
